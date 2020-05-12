@@ -1,0 +1,36 @@
+const int led_1_pin = 2;
+const int led_2_pin = 3;
+const int led_3_pin = 4;
+
+void setup(){
+  pinMode(led_1_pin, OUTPUT);
+  pinMode(led_2_pin, OUTPUT);
+  pinMode(led_3_pin, OUTPUT);
+
+}
+
+void loop(){
+  // LED Blink Once
+  blink(200, led_1_pin);
+
+  for (int i = 0; i < 2; i++){
+    blink(200, led_2_pin);
+  }
+
+
+  for (int i = 0; i < 3; i++){
+    blink(200, led_3_pin);
+  }
+
+  blink(200, led_1_pin);
+  blink(200, led_2_pin);
+  blink(200, led_3_pin);
+  
+}
+
+void blink(int seconds, int pin){
+  digitalWrite(pin, HIGH);
+  delay(seconds);
+  digitalWrite(pin, LOW);
+  delay(seconds);
+}

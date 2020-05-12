@@ -1,0 +1,36 @@
+int led_1_pin = 3;
+int led_2_pin = 5;
+int led_3_pin = 6;
+
+void setup(){
+  pinMode(led_1_pin, OUTPUT);
+  pinMode(led_2_pin, OUTPUT);
+  pinMode(led_3_pin, OUTPUT);
+
+  Serial.begin(9600);
+}
+
+void loop(){
+  int brightness_1;
+  int brightness_2;
+  int brightness_3;
+  for (int i = 0; i < 395; i++){
+    brightness_1 = max255(i);
+    brightness_2 = max255(i - 70);
+    brightness_3 = max255(i - 140);
+    
+    analogWrite(led_1_pin, brightness_1);  
+    analogWrite(led_2_pin, brightness_2);
+    analogWrite(led_3_pin, brightness_3);
+    delay(10);
+  }
+}
+
+int max255(int value){
+  if (value < 0){
+    return 0;
+  }else if (value > 255){
+    return 255;
+  }
+  return value;
+}
